@@ -1,32 +1,32 @@
-import React from 'react';
-import './directory.style.scss';
-import MenuItem from '../menu-item/menu-item.component'
-import sections from './data.js'
+import React from "react";
+import "./directory.style.scss";
+import MenuItem from "../menu-item/menu-item.component";
+import sections from "./data.js";
 
 class Directory extends React.Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            sections: sections
+    this.state = {
+      sections: sections
+    };
+  }
 
-        }
-    }
+  render() {
+    console.log("trong directory:", this.props);
+    return (
+      <div className="directory-menu">
+        {/*   {this.state.sections.map(({ title, imageUrl, id, size }) => (
+          <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+        ))}
+ */}
 
-
-    render() {
-        return (
-
-            <div className='directory-menu'>
-
-                {this.state.sections.map(({title,imageUrl,id,size}) =>
-                        <MenuItem key= {id} title={title} imageUrl={imageUrl} size ={size}/>
-                )}
-
-            </div>
-        )
-    }
-
+        {this.state.sections.map(({ id, ...resParams }) => (
+          <MenuItem key={id} {...resParams} />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default Directory;
